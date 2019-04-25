@@ -39,7 +39,7 @@ covariates <- NULL
 df <- simulate_panel(N, T, treat_effect, treated_units, treat_date)
 
 #estimate
-result <- estimate(df, covariates, treat_date, treated_units,  weight_type = "SDID", resampling_procedure = "Jackknife")
+result <- estimate(df, covariates, treat_date, treated_units)
 
 
 #output the results
