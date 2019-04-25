@@ -77,7 +77,7 @@ prepare_data <- function(df, covariates, treatment_time, treated_units)
   Y10 <- matrix(Y10, ncol = T0, byrow = TRUE)
   Y10 <- t(Y10)
   
-  
+  df <- rbind(df[df$treatment == 0,], df[df$treatment == 1,])
   
 
   #now create time and unit dummies
@@ -88,14 +88,11 @@ prepare_data <- function(df, covariates, treatment_time, treated_units)
   base_matr <- rbind(diag(x = 1, nrow = T - 1, ncol = T - 1), matrix(0, 1, T-1))
   time_dummies <- do.call(rbind, replicate(N, base_matr, simplify = FALSE))
 
-  
   #now create X matrix
   X <- as.matrix(cbind(df$treatment, df[,covariates], unit_dummies, time_dummies))
-  dim(X)
-  
+
   Y <- as.matrix(df$Y)
-  
-  
+
   result <- list()
   result$Y <- Y
   result$X <- X

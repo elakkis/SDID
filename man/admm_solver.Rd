@@ -12,11 +12,11 @@ admm_solver(Dmat, dvec, rho, max_iter, tol)
 
 \item{dvec}{: A size n vector representing involved in the linear term of}
 
+\item{rho}{: A scalar value specifying the augmented Lagrange multiplier rho for ADMM algorithm}
+
 \item{max_iter}{: A integer indicating maximum number of iterations for ADMM algorithm.}
 
 \item{tol}{: A scalar indicating the relative tolerance to determine the convergence of ADMM algorithm.}
-
-\item{rho:}{A scalar value specifying the augmented Lagrange multiplier rho for ADMM algorithm}
 }
 \value{
 x : A size n vector containing optimal primal parameters from ADMM

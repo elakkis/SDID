@@ -9,6 +9,8 @@ unit_weights(Y00, Y10, dzeta, rho, tol, weight_type)
 \arguments{
 \item{Y00}{- T0 x N0 matrix of control unit outcomes before the treatment}
 
+\item{Y10}{- T0 x N - N0 matrix of treated unit outcomes before the treatment}
+
 \item{dzeta}{- Ridge penalty parameter}
 
 \item{rho}{- parameter used in ADMM}
@@ -16,8 +18,6 @@ unit_weights(Y00, Y10, dzeta, rho, tol, weight_type)
 \item{tol}{- Convergence tolerance for ADMM algorithm}
 
 \item{weight_type}{- type of weight to be computed. Supported options are "SDID" and "Kernel"}
-
-\item{Y01}{- T0 x N - N0 matrix of treated unit outcomes before the treatment}
 }
 \value{
 N x 1 matrix of time weights for the estimation

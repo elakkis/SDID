@@ -5,7 +5,7 @@
 #' and box inequality constraints (non-negative x that sum up to one) using ADMM algorithm.
 #' @param Dmat : A (n x n) matrix representing  matrix involved in the quadratic term. Must be positive semidefinite.
 #' @param dvec : A size n vector representing involved in the linear term of
-#' @param rho: A scalar value specifying the augmented Lagrange multiplier rho for ADMM algorithm
+#' @param rho : A scalar value specifying the augmented Lagrange multiplier rho for ADMM algorithm
 #' @param max_iter : A integer indicating maximum number of iterations for ADMM algorithm.
 #' @param tol : A scalar indicating the relative tolerance to determine the convergence of ADMM algorithm.
 #' @return x : A size n vector containing optimal primal parameters from ADMM
@@ -42,18 +42,17 @@ att <- function(X, y, unit_exclude, unit_weights, time_weights) {
 
 #' Inference module. Obtains the empirical distribution of ATT estimate
 #' @param X - N*T x k data matrix
-#' @param y - N*T vector of outcomes
+#' @param Y - N*T vector of outcomes
 #' @param Y00 - T0 x N0 matrix of control unit outcomes before the treatment
 #' @param Y10 - T0 x N - N0 matrix of control unit outcomes after the treatment
 #' @param Y01 - T-T0 x N - N0 matrix of control unit outcomes after the treatment
 #' @param dzeta - Ridge penalty parameter
 #' @param rho - ADMM parameter
-#' @param weight_type - type of weight to be computed. Supported options are "SDID" and "Kernel"
-#' @param resampling_procedure - Resampling procedure used to obtain the distribution. "Jackknife" and "Bootstrap" are supported.
+#' @param tol - ADMM convergence tolerance
 #' @return List containing vector atts of estimates
 #' @export
-inference <- function(X, Y, Y00, Y01, Y10, dzeta = 10, rho = 1, tol = 1e-12, weight_type = "SDID", resampling_procedure = "Jackknife") {
-    .Call(`_sdid_inference`, X, Y, Y00, Y01, Y10, dzeta, rho, tol, weight_type, resampling_procedure)
+inference <- function(X, Y, Y00, Y01, Y10, dzeta = 10, rho = 1, tol = 1e-12) {
+    .Call(`_sdid_inference`, X, Y, Y00, Y01, Y10, dzeta, rho, tol)
 }
 
 #' The function find optimal time weights
@@ -71,7 +70,7 @@ time_weights <- function(Y00, Y01, dzeta, rho, tol, weight_type) {
 
 #' The function find optimal unit weights
 #' @param Y00 - T0 x N0 matrix of control unit outcomes before the treatment
-#' @param Y01 - T0 x N - N0 matrix of treated unit outcomes before the treatment
+#' @param Y10 - T0 x N - N0 matrix of treated unit outcomes before the treatment
 #' @param dzeta - Ridge penalty parameter
 #' @param rho - parameter used in ADMM
 #' @param tol - Convergence tolerance for ADMM algorithm

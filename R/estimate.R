@@ -20,8 +20,8 @@ estimate <- function(df, covariates, treatment_time, treated_units, weight_type 
   #estimate treatment effect
   #prepare the weights
   dzeta <-  var(df$Y)
-  rho <-  1
-  tol <-  1e-10
+  rho <-  5
+  tol <-  1e-6
   w_t <- time_weights(data$Y00, data$Y01, dzeta, rho, tol, weight_type)
   w_i <- unit_weights(data$Y00, data$Y10, dzeta, rho, tol, weight_type)
   
@@ -29,12 +29,13 @@ estimate <- function(df, covariates, treatment_time, treated_units, weight_type 
   est <- att(data$X, data$Y, -1, w_i, w_t)
   
   #inference:
-  att_ests <- inference(data$X, data$Y, data$Y00, data$Y01, data$Y10, dzeta, rho, tol, weight_type, resampling_procedure)
+  att_ests <- inference(data$X, data$Y, data$Y00, data$Y01, data$Y10, dzeta, rho, tol)
   
   result <- NULL
   result$est <- est
-  result$sigma <- sqrt(var(att_ests))
-  result$att_arr <- att_ests
-  result$CI_upper <- quantile(att_ests, 0.95)
-  result$CI_lower <- quantile(att_ests, 0.05)
+  result$att_arr <- att_ests$atts
+  result$sigma <- sd(att_ests$atts)
+  result$CI_upper <- quantile(att_ests$atts, 0.95)
+  result$CI_lower <- quantile(att_ests$atts, 0.05)
+  return(result)
 }

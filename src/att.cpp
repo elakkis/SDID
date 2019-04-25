@@ -23,7 +23,7 @@ arma::mat att(arma::mat &X, arma::colvec &y, int unit_exclude, arma::mat &unit_w
 
   for (int i = 0; i < N*T; i++)
   {
-      W(i) = unit_weights(i/T)*time_weights(1 + i % T);
+      W(i) = unit_weights(i/T)*time_weights(i % T);
   }
   
   //the first element here would be the treatment effect
@@ -48,13 +48,14 @@ arma::mat att(arma::mat &X, arma::colvec &y, int unit_exclude, arma::mat &unit_w
     }
   }
   
+  
   if (unit_exclude >= 0)
   {
     term_1.shed_row(unit_exclude + 1);
     term_1.shed_col(unit_exclude + 1);
     term_2.shed_row(unit_exclude + 1);
   }
-
+  
     
   att = solve(term_1, term_2);
   return att.submat(0, 0, 0, 0);

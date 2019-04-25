@@ -52,8 +52,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // inference
-Rcpp::List inference(arma::mat& X, arma::colvec& Y, arma::mat& Y00, arma::mat& Y01, arma::mat& Y10, double dzeta, double rho, double tol, std::string weight_type, std::string resampling_procedure);
-RcppExport SEXP _sdid_inference(SEXP XSEXP, SEXP YSEXP, SEXP Y00SEXP, SEXP Y01SEXP, SEXP Y10SEXP, SEXP dzetaSEXP, SEXP rhoSEXP, SEXP tolSEXP, SEXP weight_typeSEXP, SEXP resampling_procedureSEXP) {
+Rcpp::List inference(arma::mat& X, arma::colvec& Y, arma::mat& Y00, arma::mat& Y01, arma::mat& Y10, double dzeta, double rho, double tol);
+RcppExport SEXP _sdid_inference(SEXP XSEXP, SEXP YSEXP, SEXP Y00SEXP, SEXP Y01SEXP, SEXP Y10SEXP, SEXP dzetaSEXP, SEXP rhoSEXP, SEXP tolSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -65,9 +65,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type dzeta(dzetaSEXP);
     Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
     Rcpp::traits::input_parameter< double >::type tol(tolSEXP);
-    Rcpp::traits::input_parameter< std::string >::type weight_type(weight_typeSEXP);
-    Rcpp::traits::input_parameter< std::string >::type resampling_procedure(resampling_procedureSEXP);
-    rcpp_result_gen = Rcpp::wrap(inference(X, Y, Y00, Y01, Y10, dzeta, rho, tol, weight_type, resampling_procedure));
+    rcpp_result_gen = Rcpp::wrap(inference(X, Y, Y00, Y01, Y10, dzeta, rho, tol));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -108,7 +106,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_sdid_admm_solver", (DL_FUNC) &_sdid_admm_solver, 5},
     {"_sdid_admm_time_solver", (DL_FUNC) &_sdid_admm_time_solver, 5},
     {"_sdid_att", (DL_FUNC) &_sdid_att, 5},
-    {"_sdid_inference", (DL_FUNC) &_sdid_inference, 10},
+    {"_sdid_inference", (DL_FUNC) &_sdid_inference, 8},
     {"_sdid_time_weights", (DL_FUNC) &_sdid_time_weights, 6},
     {"_sdid_unit_weights", (DL_FUNC) &_sdid_unit_weights, 6},
     {NULL, NULL, 0}

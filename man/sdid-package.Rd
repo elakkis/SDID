@@ -27,6 +27,9 @@ Arkhangelsky et al (2019)
 \examples{
 
 #simulate the data
+
+
+#simulate the data
 N <- 100
 T <- 40
 treat_effect <- 1
@@ -36,8 +39,14 @@ covariates <- NULL
 df <- simulate_panel(N, T, treat_effect, treated_units, treat_date)
 
 #estimate
-result <- estimate(df, covariates, treatment_time, treated_units)
+result <- estimate(df, covariates, treat_date, treated_units,  weight_type = "SDID", resampling_procedure = "Jackknife")
 
+
+#output the results
+print(result$est)
+print(result$sigma)
+print(result$CI_lower)
+print(result$CI_upper)
 }
 
 \keyword{ package }

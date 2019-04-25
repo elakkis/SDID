@@ -4,11 +4,12 @@
 \alias{inference}
 \title{Inference module. Obtains the empirical distribution of ATT estimate}
 \usage{
-inference(X, Y, Y00, Y01, Y10, dzeta = 10, rho = 1, tol = 1e-12,
-  weight_type = "SDID", resampling_procedure = "Jackknife")
+inference(X, Y, Y00, Y01, Y10, dzeta = 10, rho = 1, tol = 1e-12)
 }
 \arguments{
 \item{X}{- N*T x k data matrix}
+
+\item{Y}{- N*T vector of outcomes}
 
 \item{Y00}{- T0 x N0 matrix of control unit outcomes before the treatment}
 
@@ -20,11 +21,7 @@ inference(X, Y, Y00, Y01, Y10, dzeta = 10, rho = 1, tol = 1e-12,
 
 \item{rho}{- ADMM parameter}
 
-\item{weight_type}{- type of weight to be computed. Supported options are "SDID" and "Kernel"}
-
-\item{resampling_procedure}{- Resampling procedure used to obtain the distribution. "Jackknife" and "Bootstrap" are supported.}
-
-\item{y}{- N*T vector of outcomes}
+\item{tol}{- ADMM convergence tolerance}
 }
 \value{
 List containing vector atts of estimates
