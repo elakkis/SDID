@@ -10,7 +10,7 @@ Example code:
 
 
 #simulate the data
-N <- 100 \n
+N <- 100 
 T <- 40
 treat_effect <- 1
 treated_units <- 5
