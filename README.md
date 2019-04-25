@@ -13,17 +13,17 @@ Example code:
 N <- 100  <br />
 T <- 40 <br />
 treat_effect <- 1 <br />
-treated_units <- 5
-treat_date <- 20
-covariates <- NULL
-df <- simulate_panel(N, T, treat_effect, treated_units, treat_date)
+treated_units <- 5<br />
+treat_date <- 20<br />
+covariates <- NULL<br />
+df <- simulate_panel(N, T, treat_effect, treated_units, treat_date)<br />
 
-#estimate
-result <- estimate(df, covariates, treat_date, treated_units)
+#estimate<br />
+result <- estimate(df, covariates, treat_date, treated_units)<br />
 
 
-#output the results
-print(result$est)
-print(result$sigma)
-print(result$CI_lower)
-print(result$CI_upper)
+#output the results<br />
+print(result$est)<br />
+print(result$sigma)<br />
+print(result$CI_lower)<br />
+print(result$CI_upper)<br />
