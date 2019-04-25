@@ -10,9 +10,9 @@ Example code:
 
 
 #simulate the data
-N <- 100 
-T <- 40
-treat_effect <- 1
+N <- 100  <br />
+T <- 40 <br />
+treat_effect <- 1 <br />
 treated_units <- 5
 treat_date <- 20
 covariates <- NULL
