@@ -3,6 +3,13 @@ Synthetic Difference in Difference
 
 Implementation of the Synthetic Difference in Difference Method proposed by Arkhangelsky et al (2019)
 
+
+<b> To install the package: </b>
+library(devtools)
+install_github("elakkis/SDID")
+
+
+
 Example code:
 
 
