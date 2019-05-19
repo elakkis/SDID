@@ -10,7 +10,7 @@ install_github("elakkis/SDID") <br />
 
 
 
-Example code:
+<b> Example code: </b>
 
 
 #simulate the data
